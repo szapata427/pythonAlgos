@@ -8,6 +8,11 @@ def add(n):
 
 add(29)
 
+matrix = [[1, 0, 0], 
+          [0, 5, 0], 
+          [0, 0, 3]]
+
+
 def isDiagonalMatrix(matrix):
     rows = len(matrix)
     
