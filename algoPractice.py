@@ -29,86 +29,86 @@
 # isDiagonalMatrix(matrix)
 
 
-def alarmClock(setTime, timeToSet):
-    setTimeArray = setTime.split(':')
-    setTimeHour = setTimeArray[0]
-    setTimeMin = setTimeArray[1]
+# def alarmClock(setTime, timeToSet):
+#     setTimeArray = setTime.split(':')
+#     setTimeHour = setTimeArray[0]
+#     setTimeMin = setTimeArray[1]
 
-    timeToSetArray = timeToSet.split(':')
-    timeToSetHour = timeToSetArray[0]
-    timeToSetMin = timeToSetArray[1]
+#     timeToSetArray = timeToSet.split(':')
+#     timeToSetHour = timeToSetArray[0]
+#     timeToSetMin = timeToSetArray[1]
     
     
-    maxhour = 23
-    minhour = 0
+#     maxhour = 23
+#     minhour = 0
     
-    maxminute = 59
-    minminute = 0
-    
-    
-    hourdifference = int(setTimeHour) - int(timeToSetHour)
-    minDifference = int(setTimeMin) - int(timeToSetMin)
-    
-    gouphour = False
-    godownhour = False
-    
-    goUpMin = False
-    goDownMin = False
-    
-    godowndifference = abs(hourdifference - maxhour)
-    goupdifference  = abs(hourdifference - minhour)
-    
-    downminDifference = abs(minDifference - maxminute)
-    upminDifference  = abs(minDifference - minminute)
+#     maxminute = 59
+#     minminute = 0
     
     
-    if godowndifference == goupdifference:
-        same = True
+#     hourdifference = int(setTimeHour) - int(timeToSetHour)
+#     minDifference = int(setTimeMin) - int(timeToSetMin)
+    
+#     gouphour = False
+#     godownhour = False
+    
+#     goUpMin = False
+#     goDownMin = False
+    
+#     godowndifference = abs(hourdifference - maxhour)
+#     goupdifference  = abs(hourdifference - minhour)
+    
+#     downminDifference = abs(minDifference - maxminute)
+#     upminDifference  = abs(minDifference - minminute)
+    
+    
+#     if godowndifference == goupdifference:
+#         same = True
 
-    if godowndifference < goupdifference:
-        print(godowndifference)
-        godownhour = True
-    else:
-        print(goupdifference)
-        gouphour = True
-    
-
-    if downminDifference == upminDifference:
-        samemin = True
-
-    if downminDifference < upminDifference:
-        print(downminDifference)
-        goDownMin = True
-    else:
-        print(upminDifference)
-        goUpMin = True
+#     if godowndifference < goupdifference:
+#         print(godowndifference)
+#         godownhour = True
+#     else:
+#         print(goupdifference)
+#         gouphour = True
     
 
-    print(godowndifference)
+#     if downminDifference == upminDifference:
+#         samemin = True
 
-    alarmHour = 0
-    alarmMin = 0
+#     if downminDifference < upminDifference:
+#         print(downminDifference)
+#         goDownMin = True
+#     else:
+#         print(upminDifference)
+#         goUpMin = True
     
-    print(godownhour)
-    if same == True:
-        alarmHour = 0
-    elif godownhour == True:
-        alarmHour = godowndifference
-    else: 
-        alarmHour = goupdifference
+
+#     print(godowndifference)
+
+#     alarmHour = 0
+#     alarmMin = 0
+    
+#     print(godownhour)
+#     if same == True:
+#         alarmHour = 0
+#     elif godownhour == True:
+#         alarmHour = godowndifference
+#     else: 
+#         alarmHour = goupdifference
         
-    if samemin == True:
-        alarmMin = 0
-    elif goDownMin == True:
-        alarmMin = downminDifference
-    else: 
-        alarmMin = upminDifference
+#     if samemin == True:
+#         alarmMin = 0
+#     elif goDownMin == True:
+#         alarmMin = downminDifference
+#     else: 
+#         alarmMin = upminDifference
     
-    result = alarmHour + alarmMin
+#     result = alarmHour + alarmMin
     
-    return result
+#     return result
 
-print(alarmClock("08:45", "08:00"))
+# print(alarmClock("08:45", "08:00"))
 
 
 
@@ -172,3 +172,43 @@ print(alarmClock("08:45", "08:00"))
 
 # a = [1, 4, 2, 1, 7, 6]
 # print(nearestgreates(a))
+
+
+def timeConversion(s):
+    timestring = s.split(':')
+    hour = timestring[0]
+    mins = timestring[1]
+    miliseconds = timestring[2]
+
+    start = 0
+    upto = 0
+    downto = 12
+
+    middle = 12
+    finalhour = 0
+    if 'PM' in miliseconds:
+        upto = int(hour) - start
+        if int(hour) == 12:
+            finalhour = hour
+        else:
+            finalhour = abs(upto + middle)
+        if len(str(finalhour)) == 1:
+            finalhour = '0' + str(finalhour)
+        finaltime = str(finalhour) + ':' + mins + ':' + miliseconds.replace('PM', "")
+
+    if 'AM' in miliseconds:
+        upto = int(hour) - start
+        if int(hour) == 12:
+            finalhour = 0
+        else:
+
+            finalhour = abs(upto)
+        if len(str(finalhour)) == 1:
+            finalhour = '0' + str(finalhour)
+        finaltime = str(finalhour) + ':' + mins + ':' + miliseconds.replace('AM', "")
+    print(finaltime)
+
+
+timeConversion('06:40:03AM')
+
+
