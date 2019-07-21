@@ -174,41 +174,71 @@
 # print(nearestgreates(a))
 
 
-def timeConversion(s):
-    timestring = s.split(':')
-    hour = timestring[0]
-    mins = timestring[1]
-    miliseconds = timestring[2]
+# def timeConversion(s):
+#     timestring = s.split(':')
+#     hour = timestring[0]
+#     mins = timestring[1]
+#     miliseconds = timestring[2]
 
-    start = 0
-    upto = 0
-    downto = 12
+#     start = 0
+#     upto = 0
+#     downto = 12
 
-    middle = 12
-    finalhour = 0
-    if 'PM' in miliseconds:
-        upto = int(hour) - start
-        if int(hour) == 12:
-            finalhour = hour
-        else:
-            finalhour = abs(upto + middle)
-        if len(str(finalhour)) == 1:
-            finalhour = '0' + str(finalhour)
-        finaltime = str(finalhour) + ':' + mins + ':' + miliseconds.replace('PM', "")
+#     middle = 12
+#     finalhour = 0
+#     if 'PM' in miliseconds:
+#         upto = int(hour) - start
+#         if int(hour) == 12:
+#             finalhour = hour
+#         else:
+#             finalhour = abs(upto + middle)
+#         if len(str(finalhour)) == 1:
+#             finalhour = '0' + str(finalhour)
+#         finaltime = str(finalhour) + ':' + mins + ':' + miliseconds.replace('PM', "")
 
-    if 'AM' in miliseconds:
-        upto = int(hour) - start
-        if int(hour) == 12:
-            finalhour = 0
-        else:
+#     if 'AM' in miliseconds:
+#         upto = int(hour) - start
+#         if int(hour) == 12:
+#             finalhour = 0
+#         else:
 
-            finalhour = abs(upto)
-        if len(str(finalhour)) == 1:
-            finalhour = '0' + str(finalhour)
-        finaltime = str(finalhour) + ':' + mins + ':' + miliseconds.replace('AM', "")
-    print(finaltime)
+#             finalhour = abs(upto)
+#         if len(str(finalhour)) == 1:
+#             finalhour = '0' + str(finalhour)
+#         finaltime = str(finalhour) + ':' + mins + ':' + miliseconds.replace('AM', "")
+#     print(finaltime)
 
 
-timeConversion('06:40:03AM')
+# timeConversion('06:40:03AM')
+
+
+
+def miniMaxSum(arr):
+    currentindex = 0
+    sumarray = []
+
+    sum = 0
+    for x in arr:
+        if currentindex == arr.index(x):
+            for y in arr:
+                if currentindex != arr.index(y):
+                    sum += y
+            sumarray.append(sum)
+            sum = 0   
+            currentindex += 1
+
+    max = 0
+    min = 0
+    for k in sumarray:
+        if sumarray.index(k) == 0:
+            min = k
+        if k >= max:
+            max = k
+        if k <= min:
+            min = k
+
+    print(min, max)
+print(miniMaxSum([5,5,5,5,5]))
+
 
 
