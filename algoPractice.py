@@ -1,3 +1,5 @@
+import requests
+
 # def add(n):
 #     string = str(n)
 #     total = 0
@@ -242,13 +244,27 @@
 
 
 
-def oddNumbers(l, r):
-    numbers = list(range(l, r+1))
-    oddnumbers = []
-    for x in numbers:
+# def oddNumbers(l, r):
+#     numbers = list(range(l, r+1))
+#     oddnumbers = []
+#     for x in numbers:
         
-        if x % 2 != 0:
-            oddnumbers.append(x)
-    return oddnumbers
+#         if x % 2 != 0:
+#             oddnumbers.append(x)
+#     return oddnumbers
 
-print(oddNumbers(2, 5))
+# print(oddNumbers(2, 5))
+
+
+def getTopicCount(topic):
+
+    url = f'https://en.wikipedia.org/w/api.php?action=parse&section=0&prop=text&format=json&page={topic}'
+    r = requests.get(url)
+    info = r.json()
+    data = info['parse']
+
+    text = data["text"]
+
+    textsring = str(text)
+
+    print(textsring.count(topic))
