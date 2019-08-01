@@ -213,32 +213,42 @@
 
 
 
-def miniMaxSum(arr):
-    currentindex = 0
-    sumarray = []
+# def miniMaxSum(arr):
+#     currentindex = 0
+#     sumarray = []
 
-    sum = 0
-    for x in arr:
-        if currentindex == arr.index(x):
-            for y in arr:
-                if currentindex != arr.index(y):
-                    sum += y
-            sumarray.append(sum)
-            sum = 0   
-            currentindex += 1
+#     sum = 0
+#     for x in arr:
+#         if currentindex == arr.index(x):
+#             for y in arr:
+#                 if currentindex != arr.index(y):
+#                     sum += y
+#             sumarray.append(sum)
+#             sum = 0   
+#             currentindex += 1
 
-    max = 0
-    min = 0
-    for k in sumarray:
-        if sumarray.index(k) == 0:
-            min = k
-        if k >= max:
-            max = k
-        if k <= min:
-            min = k
+#     max = 0
+#     min = 0
+#     for k in sumarray:
+#         if sumarray.index(k) == 0:
+#             min = k
+#         if k >= max:
+#             max = k
+#         if k <= min:
+#             min = k
 
-    print(min, max)
-print(miniMaxSum([5,5,5,5,5]))
+#     print(min, max)
+# print(miniMaxSum([5,5,5,5,5]))
 
 
 
+def oddNumbers(l, r):
+    numbers = list(range(l, r+1))
+    oddnumbers = []
+    for x in numbers:
+        
+        if x % 2 != 0:
+            oddnumbers.append(x)
+    return oddnumbers
+
+print(oddNumbers(2, 5))
