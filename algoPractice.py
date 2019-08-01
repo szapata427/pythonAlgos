@@ -256,15 +256,43 @@ import requests
 # print(oddNumbers(2, 5))
 
 
-def getTopicCount(topic):
+# def getTopicCount(topic):
 
-    url = f'https://en.wikipedia.org/w/api.php?action=parse&section=0&prop=text&format=json&page={topic}'
-    r = requests.get(url)
-    info = r.json()
-    data = info['parse']
+#     url = f'https://en.wikipedia.org/w/api.php?action=parse&section=0&prop=text&format=json&page={topic}'
+#     r = requests.get(url)
+#     info = r.json()
+#     data = info['parse']
 
-    text = data["text"]
+#     text = data["text"]
 
-    textsring = str(text)
+#     textsring = str(text)
 
-    print(textsring.count(topic))
+#     print(textsring.count(topic))
+
+
+def numberOfPaths(a):
+    p = len(a)
+    q = len(a[0])
+    blocked = False
+    if p == 0 or q == 0:
+        return 0
+
+    ok = [1 for i in range(q)] 
+
+    for x in a:
+        for k in x:
+            if k == 0:
+                blocked = True
+                break
+    for i in range(p - 1): 
+        for j in range(1, q): 
+            ok[j] += ok[j - 1]
+    if blocked: 
+        return ok[q - 2]
+    else:
+        return ok[q - 1] 
+
+
+
+a = [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]
+print(numberOfPaths(a))
